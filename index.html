@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todos</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+    <section class="todoapp">
+        <div>
+            <header class="header">
+                <h1>todos</h1>
+                <input class="new-todo" placeholder="请输入内容" v-model="val" @keyup.13="keyup">
+            </header>
+            <section class="main">
+                <input class="toggle-all" type="checkbox" v-model="all" @click="allClick">
+
+                <ul class="todo-list">
+                    <li :class="{completed:val.checked}" v-for="val,key in arr" v-show="val.show">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" v-model="val.checked" @click="allFn">
+                            <label>{{val.title}}</label>
+                            <button class="destroy" @click="click(val)">
+                            </button>
+                        </div>
+                    </li>
+                    <!--<input class="edit" value="多多对对对"> -->
+
+                </ul>
+            </section>
+            <footer class="footer">
+                <span class="todo-count">
+	            	<strong>{{unSelected}}</strong>
+	            	<span>条未选中</span>
+                </span>
+               <ul class="filters">
+          <li>
+            <a href="javascript:;" class="selected"
+            v-on:click="showAll"
+           
+            >All</a>
+          </li>
+          <li>
+            <a href="javascript:;"
+            @click="actived"
+            >Active</a>
+          </li>
+          <li>
+            <a href="javascript:;"  @click="completed">completed</a>
+          </li>
+        </ul>
+        <button class="clear-completed">Clear completed</button>
+            </footer>
+
+        </div>
+    </section>
+    <script src="vue.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+</body>
+
+</html>
